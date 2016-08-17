@@ -1,9 +1,7 @@
 function borderize(lat, long){ //5x5 arrays only
     var last = 801;
-    
-    var lat = 3.241916;
+    var lat = 3.181916;
     var long = 101.704;
-    
     var x = lat + 0.010 ;
 	var y  = long - 0.010 ;
 
@@ -104,19 +102,26 @@ function borderize(lat, long){ //5x5 arrays only
 	}
 
     if (finalZip == "" || finalZip == null){
-      finalArrayCopy.splice( highest ,1 );
+      var highest_1 = Math.max.apply(Math, finalArrayCopy);
+      var index_1 = finalArrayCopy.indexOf(highest_1);
+      finalArrayCopy.splice( index_1 ,1 );
       var highest_2 = Math.max.apply(Math, finalArrayCopy);
       var index_2 = finalArray.indexOf(highest_2);
-      var shoot1 = result[0][index_2];
-      if (shoot1 == "" || shoot1 == null){
-        finalArrayCopy.splice(highest_2, 1);
+      
+      if (result[0][index_2] == "" || result[0][index_2] == null){
+        finalArrayCopy.splice(index_2, 1);
         var highest_3 = Math.max.apply(Math, finalArrayCopy);
         var index_3 = finalArray.indexOf(highest_3);
-        return result[0][index_3];
+       var sgaga =  result[0][index_3];
+        var foo = "debug";
+        
       }
       else{
         return result[0][index_2];
       }
+    }
+    else{
+      return finalZip;
     }
 };
 
